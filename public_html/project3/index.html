@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Statistical Calculator</title>
+    <link href="../css/site.css" rel="stylesheet" type="text/css">
+
+    <style>
+
+
+    </style>
+
+</head>
+<body id="p3bg" style="background-color: orange">
+<h2 id="p3header"> Statistical Calculator </h2>
+<?php
+echo "My first PHP script!";
+?>
+<form onSubmit="return performStatistics();">
+
+<textarea rows="4" cols="50" id="textarea" >
+
+</textarea><br>
+
+    <input type="reset" value="Reset">
+    <input type="submit" value="Submit">
+    <br><br>
+
+    <label>Min:<br>
+        <input type="text" name="min" id="min" readonly>
+        <br></label>
+    <label>Max:<br>
+        <input type="text" name="max" id="max" readonly>
+        <br></label>
+    <label>Sum:<br>
+        <input type="text" name="sum" id="sum" readonly>
+        <br></label>
+    <label>Mean:<br>
+        <input type="text" name="mean" id="mean" readonly>
+        <br></label>
+    <label>Median:<br>
+        <input type="text" name="median" id="median" readonly>
+        <br></label>
+    <label>Mode:<br>
+        <input type="text" name="mode" id="mode" readonly>
+        <br></label>
+    <label>Variance:<br>
+        <input type="text" name="variance" id="variance" readonly>
+        <br></label>
+    <label>Std. Dev:<br>
+        <input type="text" name="std_dev" id="std_dev" readonly>
+        <br></label>
+</form>
+<script type="text/javascript" src="script.js"></script>
+<div id="p3_footer">
+    <a href="../index.html">ePortfolio</a>
+</div>
+</body>
+</html>

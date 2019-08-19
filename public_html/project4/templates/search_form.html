@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Search Movie</title>
+</head>
+<body>
+<h2 style="color: #2196F3"> myMovies Xpress!</h2>
+<h3>Welcome, <?php echo $_SESSION["disp_name"]; ?></h3><a id="logout" href="#" onclick="confirmLogout();">Logout</a>
+    <div>Search for a movie:</div>
+    <form action="./search.php" method="post">
+        Keyword:<br>
+        <input type="text" name="keyword" required>
+        <br>
+        <button id="cancel">Cancel</button>
+        <input type="reset" value="Reset"> &#160;
+        <input type="submit" value="Submit"><br><br>
+    </form>
+
+<script>
+    var btn = document.getElementById('cancel');
+    btn.addEventListener('click', function() {
+        document.location.href = './index.php';
+    });
+</script>
+<script type="text/javascript" src="script.js"></script>
+</body>
+</html>

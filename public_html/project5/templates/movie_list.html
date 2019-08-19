@@ -1,0 +1,37 @@
+<table cellspacing="20">
+    <tr>
+        <th>Poster</th>
+        <th>Title(year)</th>
+        <th></th>
+        <?php if ($forEmail == False){?>
+        <th>Remove</th>
+        <?php } ?>
+    </tr>
+    <?php
+
+      foreach ($cart as $movie_id) {
+        $movie_data = getMovieData($movie_id);
+        $movieIDFromCart = $movie_data["ID"];
+        $title = $movie_data["Title"];
+        $year = $movie_data["Year"];
+        $poster = $movie_data["Poster"];
+        $imdbID = $movie_data["IMDB_ID"];
+        ?>
+    <tr>
+
+        <td>
+            <img src="<?php echo $poster; ?>" height="100">
+        </td>
+        <td> <a href="https://www.imdb.com/title/<?php echo $imdbID;?>" target="_blank"><?php echo $title . '(' . $year . ')' ?></a> </td>
+        <?php
+            if ($forEmail == FALSE){?>
+        <td><a href="javascript:void(0);" onclick="displayMovieInformation('<?php echo $movieIDFromCart ?>');">View More Info</a></td>
+        <td><a href="javascript:confirmRemove('<?php echo $title;?>','<?php echo $movieIDFromCart;?>')">X</a></td>
+        <?php } ?>
+    </tr>
+    <?php }?>
+</table>
+
+
+
+

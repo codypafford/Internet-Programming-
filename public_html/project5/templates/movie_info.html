@@ -1,0 +1,36 @@
+
+<link href="../css/site.css" rel="stylesheet" type="text/css">
+
+<?php
+  if(is_array($movieData)){?>
+<div class='modal-header'>
+    <span class='close'>[Close]</span>
+    <h2><?php echo $title . '(' . $year . ')' . ' ' . 'Rated:' .  $rating . ' ' . $runtime ?> <br/><?php echo $genre ?> </h2>
+</div>
+<div class='modal-body'>
+    <p>Actors: <?php echo $actors ?> <br/>Directed By: <?php echo $director ?> <br/>Written By: <?php echo $writer ?> </p>
+</div>
+<div class='modal-footer'>
+    <p><?php echo $plot ?> </p>
+</div>
+
+<?php }?>
+
+
+<?php
+  if(!is_array($movieData)){?>
+<div class='modal-header'>
+    <span class='close'>[Close]</span>
+    <h2>Title (Year) Rated Rating Runtime<br />Genre</h2>
+</div>
+<div class='modal-body'>
+    <p>Actors: Actors<br />Directed By: Director<br />Written By: Writer</p>
+</div>
+<div class='modal-footer'>
+    <p>Invalid Movie ID</p>
+</div>
+
+<?php }?>
+
+
+

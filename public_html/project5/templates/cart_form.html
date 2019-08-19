@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title id="title">Shopping Cart</title>
+
+</head>
+<body>
+
+<h2 style="color: #2196F3"> myMovies Xpress!</h2>
+
+<?php
+  if ($forEmail == FALSE){?>
+<script>document.title = "Shopping Cart";</script>
+<h3>Welcome, <?php echo $_SESSION["disp_name"]; ?></h3>
+<?php } ?>
+<?php
+        if ($movie_count == 0){
+            echo "0 Movies in Your Cart<br>";
+            echo "Add Some Movies!<br>";
+        }
+        else{
+            echo $movie_count . " Movies in Your Shopping Cart";?>
+<br><br>
+<?php if($forEmail == FALSE){?>
+
+    <a id="logout" href="#" onclick="confirmLogout();">Logout</a><br><br>
+<?php } ?>
+<label for="select_order">Sort Movies By:</label>
+<select id='select_order' onchange='changeMovieDisplay();'>
+    <option value="0" selected="selected">Movie Title</option>
+    <option value="1">Runtime (shortest -> longest)</option>
+    <option value="2">Runtime (longest -> shortest)</option>
+    <option value="3">Year (old -> new)</option>
+    <option value="4">Year (new -> old)</option>
+</select>
+<div id='shopping_cart'>  <?php echo $movie_list;?> </div>
+
+
+<?php  }?>
+
+<?php
+  if ($forEmail == FALSE){?>
+<button id="myBtn">Add Movie</button>
+<button id="checkout">Checkout</button>
+<?php } ?>
+
+
+<br><br>
+
+
+<script>
+    var btn = document.getElementById('myBtn');
+    try {
+        btn.addEventListener('click', function () {
+            document.location.href = './search.php';
+        });
+    }catch (e) {
+
+    }
+</script>
+
+<script>
+    var btn = document.getElementById('checkout');
+    try {
+        btn.addEventListener('click', function () {
+            confirmCheckout();
+        });
+    }catch (e) {
+
+    }
+</script>
+
+
+<script type="text/javascript" src="script.js"></script>
+<?php
+  if ($forEmail == FALSE){
+   echo ""; ?>
+
+<div id='modalWindow' class='modal'>
+    <div id='modalWindowContent' class='modal-content'>
+    </div>
+</div>
+<?php } ?>
+
+<!--<table cellspacing="20">
+    <tr>
+        <th>Poster</th>
+        <th>Title(year)</th>
+        <th>Remove</th>
+    </tr>
+    <?php
+    $myarray = readMovieData();
+    foreach ($myarray as $value) {
+    $movie = file_get_contents("http://www.omdbapi.com/?apikey=dba1e6b3&i=" . $value . "&type=movie&r=json");
+    $array = json_decode($movie, true);
+    $img =  $array["Poster"];
+    $movie_id = $array["movie_id"];
+    $title = $array["Title"];?>
+    <tr>
+    <td>
+        <img src="<?php echo $poster; ?>" height="100">
+    </td>
+    <td><a href="https://www.imdb.com/title/<?php echo $array['imdbID'];?>"
+           target="_blank"><?php echo $array["Title"]; ?>
+        <?php echo $array["Year"]; ?></a></td>
+    <td><a href="javascript:confirmRemove('<?php echo $array['Title'];?>','<?php echo $array['imdbID'];?>')">X</a></td>
+    </tr>
+    <?php }?>
+</table>-->
+
+</body>
+</html>

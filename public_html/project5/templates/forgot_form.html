@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Forgot Your Password</title>
+</head>
+<body>
+<h2 style="color: #2196F3"> myMovies Xpress!</h2>
+<form action="./logon.php" method="post">
+    Username:<br>
+    <input type="text" name="username" placeholder="Username" required><br><br>
+    <input type="reset" value="Reset"> &#160;
+    <input type="submit" value="Submit"> &#160;
+    <button id="cancel_forgot_form">Cancel</button>
+    <input type="hidden" name="action" value="forgot" />
+</form>
+<script>
+    var btn = document.getElementById('cancel_forgot_form');
+    btn.addEventListener('click', function() {
+        confirmCancel("forgot"); //is this right?
+    });
+</script>
+<script type="text/javascript" src="script.js"></script>
+</body>
+</html>

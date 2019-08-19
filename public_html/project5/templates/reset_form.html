@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Reset Password</title>
+</head>
+<body>
+<h2 style="color: #2196F3"> myMovies Xpress!</h2>
+<form action="./logon.php" onsubmit="return validateResetPasswordForm();" method="post">
+    Password:<br>
+    <input type="text" name="password" placeholder="Password" required><br>
+    <input type="text" name="confirm_password" placeholder="Confirm Password" required><br>
+
+    <input type="reset" value="Clear"> &#160;
+    <input type="submit" value="Reset Password"> &#160;
+    <button id="cancel_reset_form">Cancel</button>
+
+    <input type="hidden" name="action" value="reset" />
+    <input type="hidden" name="user_id" value="<?php echo $userId ?>" />  <!--change value to the variable $userId once i get it-->
+
+</form>
+<script>
+    var btn = document.getElementById('cancel_reset_form');
+    btn.addEventListener('click', function() {
+        confirmCancel("reset"); //is this right?
+    });
+</script>
+<script type="text/javascript" src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Search Results</title>
+</head>
+<body>
+<h2 style="color: #2196F3"> myMovies Xpress!</h2>
+<h3>Welcome, <?php echo $_SESSION["disp_name"]; ?></h3><a id="logout" href="#" onclick="confirmLogout();">Logout</a>
+
+<h2><?php
+    echo count($array) . " Movies Found!";
+?></h2>
+
+
+<table cellspacing="20">
+    <tr>
+        <th>Poster</th>
+        <th>Title(year)</th>
+        <th>Add</th>
+    </tr>
+<?php
+    foreach ($array as $value) {
+        $img =  $value["Poster"];
+        $movie_id = $value["movie_id"];?>
+    <tr>
+        <td>
+            <img src="<?php echo $img; ?>" width="60" height="80" style="margin-right: 70px;">
+        </td>
+        <td style="margin-left: 50px;">  <a href="https://www.imdb.com/title/<?php echo $value['imdbID'];?>" target="_blank"><?php echo $value["Title"]; ?> <?php echo $value["Year"]; ?></a></td>
+        <td><a href="javascript:addMovie('<?php echo $value['imdbID'];?>')">+</a> </td>
+    </tr>
+
+<?php }?>
+
+</table>
+<button onclick="location.href = './index.php';">Cancel</button>
+
+
+
+<script type="text/javascript" src="script.js"></script>
+</body>
+</html>
+

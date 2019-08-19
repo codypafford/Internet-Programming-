@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title> Logon Form </title>
+    <link href="../../css/site.css" rel="stylesheet" type="text/css">
+    <style>
+        body {
+            background: url("images/curtain.jpg") no-repeat;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+        }
+        /* unvisited link */
+        a:link {
+            color: deepskyblue;
+        }
+
+        /* visited link */
+        a:visited {
+            color: green;
+        }
+
+        /* mouse over link */
+        a:hover {
+            color: lavender;
+        }
+
+        /* selected link */
+        a:active {
+            color: blue;
+        }
+    </style>
+</head>
+<body>
+
+
+<object data="../images/movie_exp.png" type="image/png">
+    <img src="images/movie_exp.png" alt="example">
+</object>
+
+<p style="color: #3D9970">Please fill out the following:</p>
+<form action="./logon.php" method="post">
+    <span style="color: #3D9970">Username:</span><br>
+    <input type="text" name="username" required>
+    <br>
+    <span style="color: #3D9970">Password:</span><br>
+    <input type="password" name="password" required>
+    <br>
+    <input type="reset" value="Reset"> &#160;
+    <input type="submit" value="Submit"><br><br>
+    <input type="hidden" name="action" value="login" />
+    <a href="./logon.php?form=create">Create Account</a>
+    <a href="./logon.php?form=forgot">Forgot Password</a>
+</form>
+<div id="p4_footer">
+    <a  href="../index.html">ePortfolio</a>
+</div>
+</body>
+</html>
+

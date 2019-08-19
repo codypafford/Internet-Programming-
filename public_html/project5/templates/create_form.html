@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Account</title>
+</head>
+<body>
+<h2 style="color: #2196F3"> myMovies Xpress!</h2>
+<form action="./logon.php" onsubmit="return validateCreateAccountForm();" method="post">
+    Display Name:<br>
+    <input type="text" name="disp_name" placeholder="Display Name" id="disp_name" required>
+    <br>
+    Email Address:<br>
+    <input type="text" name="email" placeholder="Email Address" id="email" required >
+    <br>
+    Confirm Email Address:<br>
+    <input type="text" name="email_confirm" placeholder="Confirm Email Address" id="confirm_email" required>
+    <br>
+    Username:<br>
+    <input type="text" name="username" placeholder="Username" id="username" required>
+    <br>
+    Password:<br>
+    <input type="password" name="password" placeholder="Password" id="password" required>
+    <br>
+    Confirm Password:<br>
+    <input type="password" name="confirm_pw" placeholder="Confirm Password" id="confirm_password" required>
+    <br><br>
+    <input type="reset" value="Reset"> &#160;
+    <input type="submit" value="Submit"> &#160;
+    <button id="cancel_create_form">Cancel</button>
+    <input type="hidden" name="action" value="create" />
+
+
+</form>
+<script>
+    var btn = document.getElementById('cancel_create_form');
+    btn.addEventListener('click', function() {
+        confirmCancel("create"); //is this right?
+    });
+</script>
+<script type="text/javascript" src="script.js"></script>
+</body>
+</html>

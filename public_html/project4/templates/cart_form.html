@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Shopping Cart</title>
+</head>
+<body>
+
+<h3>Welcome, <?php echo $_SESSION["disp_name"]; ?></h3>
+<h2 style="color: #2196F3"> myMovies Xpress!</h2>
+<?php
+    clearstatcache();
+    if (filesize('./data/cart.db') == 0){?>
+<div style="color: red;"><?php echo "0 Movies in Cart"; ?> </div>
+<?php
+        echo PHP_EOL;
+        echo "Add Movies to your Cart";
+    }
+    else{
+    $file = file_get_contents('./data/cart.db');
+    $myArray = explode(',', $file);
+    $count = count($myArray);
+    echo $count . " Movies in Your Shopping Cart";
+
+    }
+?>
+<?php echo "\n"?>
+<table cellspacing="20">
+    <tr>
+        <th>Poster</th>
+        <th>Title(year)</th>
+        <th>Remove</th>
+    </tr>
+    <?php
+    $myarray = readMovieData();
+    foreach ($myarray as $value) {
+    $movie = file_get_contents("http://www.omdbapi.com/?apikey=dba1e6b3&i=" . $value . "&type=movie&r=json");
+    $array = json_decode($movie, true);
+    $img =  $array["Poster"];
+    $movie_id = $array["movie_id"];
+    $title = $array["Title"];?>
+
+    <td>
+        <img src="<?php echo $img; ?>" height="100">
+    </td>
+    <td><a href="https://www.imdb.com/title/<?php echo $array['imdbID'];?>"
+           target="_blank"><?php echo $array["Title"]; ?>
+        <?php echo $array["Year"]; ?></a></td>
+    <td><a href="javascript:confirmRemove('<?php echo $array['Title'];?>','<?php echo $array['imdbID'];?>')">X</a></td>
+    </tr>
+    <?php }?>
+</table>
+
+
+<a id="logout" href="#" onclick="confirmLogout();">Logout</a>
+<br><br>
+
+<button id="myBtn">Add Movie</button>
+<button id="checkout">Checkout</button>
+
+<script>
+    var btn = document.getElementById('myBtn');
+    btn.addEventListener('click', function () {
+        document.location.href = './search.php';
+    });
+</script>
+
+<script>
+    var btn = document.getElementById('checkout');
+    btn.addEventListener('click', function () {
+        confirmCheckout();
+    });
+</script>
+
+<script type="text/javascript" src="script.js"></script>
+</body>
+</html>
